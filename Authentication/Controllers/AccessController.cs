@@ -4,6 +4,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Authentication.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Authentication.Controllers
 {
@@ -47,6 +48,17 @@ namespace Authentication.Controllers
 
             ViewData["ValidateMessage"] = "user not found";
             return View();
+        }
+
+        [AllowAnonymous, HttpGet("forgot-password")]
+        public IActionResult ForgotPassword(ForgotPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ModelState.Clear();
+                model.EmailSent = true;
+            }
+            return View(model);
         }
     }
 }
