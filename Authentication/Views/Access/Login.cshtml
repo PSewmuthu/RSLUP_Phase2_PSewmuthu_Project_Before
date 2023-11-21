@@ -21,6 +21,9 @@
             Keep me logged In.
         </label>
         <button type="submit">Login</button>
+        <div>
+            <a asp-action="ForgotPassword">Forgot Password?</a>
+        </div>
 
         @if(ViewData["ValidateMessage"] != null)
         {
