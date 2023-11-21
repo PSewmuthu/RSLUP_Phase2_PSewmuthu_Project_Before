@@ -50,15 +50,11 @@ namespace Authentication.Controllers
             return View();
         }
 
-        [AllowAnonymous, HttpGet("forgot-password")]
-        public IActionResult ForgotPassword(ForgotPasswordModel model)
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
         {
-            if (ModelState.IsValid)
-            {
-                ModelState.Clear();
-                model.EmailSent = true;
-            }
-            return View(model);
+            return View();
         }
     }
 }
